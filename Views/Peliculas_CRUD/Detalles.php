@@ -40,6 +40,7 @@ $date = $obj->show($_GET['id']);
             <th scope="col">Imagen</th>
             <th scope="col">Descripción</th>
             <th scope="col">Fecha de publicación</th>
+            <th scope="col">Tipo de genero</th>
         </tr>
     </thead>
     <tbody>
@@ -49,6 +50,7 @@ $date = $obj->show($_GET['id']);
             <td scope="col"><?php echo $date["imagen"] ?></td>
             <td scope="col"><?php echo $date["descripcion"] ?></td>
             <td scope="col"><?php echo $date["fecha_publicacion"] ?></td>
+            <td scope="col"><?php echo $date["genero"] ?></td>
         </tr>
     </tbody>
 </table>
