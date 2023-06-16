@@ -3,7 +3,7 @@ require_once '../Plantillas/header.php';
 ?>
 <div class="text-center mt-4">
     <h1 class="text-blac mb-4">Registro de peliculas</h1>
-    <p class="text-primary">Aqui puede ir el mensaje de registro exitoso o no exitoso</p>
+    <p class="text-primary">Completa todos los campos</p>
 </div>
 
 <form action="almacenar.php" method="POST" enctype="multipart/form-data" autocomplete="off">
