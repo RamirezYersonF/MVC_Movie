@@ -11,14 +11,17 @@ class PeliculasModels
     }
     public function insertarDatosPeliculas($titulo, $descripcion, $imagen, $fecha_publicacion)
     {
+        $fecha_publicacion_converted = date('Y-m-d', strtotime($fecha_publicacion));
+
         $statement = $this->pdo->prepare("INSERT INTO tb_peliculas (titulo, descripcion, imagen, fecha_publicacion) VALUES (:titulo, :descripcion, :imagen, :fecha_publicacion)");
         $statement->bindParam(":titulo", $titulo);
         $statement->bindParam(":descripcion", $descripcion);
         $statement->bindParam(":imagen", $imagen);
-        $statement->bindParam(":fecha_publicacion", $fecha_publicacion);
+        $statement->bindParam(":fecha_publicacion", $fecha_publicacion_converted);
 
         return ($statement->execute()) ? $this->pdo->lastInsertId() : false;
     }
+
     public function show($id)
     {
         $statement = $this->pdo->prepare("SELECT * FROM tb_peliculas WHERE id_peliculas = :id");
@@ -32,18 +35,19 @@ class PeliculasModels
     }
     public function update($id, $titulo, $descripcion, $imagen, $fecha_publicacion)
     {
-        $statement = $this->pdo->prepare("UPDATE tb_peliculas SET titulo = :titulo, descripcion = :descripcion, imagen = :imagen, fecha_publicacion = :fecha_publicacion WHERE id_peliculas = :id");
+        $statement = $this->pdo->prepare("UPDATE tb_peliculas SET titulo = :titulo,  imagen = :imagen, descripcion = :descripcion, fecha_publicacion = :fecha_publicacion WHERE id_peliculas = :id");
         $statement->bindParam(":id", $id);
         $statement->bindParam(":titulo", $titulo);
-        $statement->bindParam(":descripcion", $descripcion);
         $statement->bindParam(":imagen", $imagen);
+        $statement->bindParam(":descripcion", $descripcion);
         $statement->bindParam(":fecha_publicacion", $fecha_publicacion);
         return ($statement->execute()) ? $id : false;
     }
-    
-    public function delete($id){
+
+    public function delete($id)
+    {
         $stament = $this->pdo->prepare("DELETE FROM tb_peliculas  WHERE id_peliculas = :id");
-        $stament->bindParam(":id",$id);
+        $stament->bindParam(":id", $id);
         return ($stament->execute()) ? true : false;
     }
 }

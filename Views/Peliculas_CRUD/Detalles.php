@@ -26,7 +26,6 @@ $date = $obj->show($_GET['id']);
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
                     <a href="Eliminar.php?id<?= $date[0] ?>" class="btn btn-danger">Elimnar</a>
-                    <!-- <button type="button" class="btn btn-danger">Eliminar</button> -->
                 </div>
             </div>
         </div>
@@ -53,6 +52,3 @@ $date = $obj->show($_GET['id']);
         </tr>
     </tbody>
 </table>
-<?php
-require_once '../../Views/Plantillas/footer.php';
-?>
